@@ -1,3 +1,9 @@
+/*
+ * @Author: Wenzhe
+ * @Date: 2020-04-08 16:25:28
+ * @LastEditors: Wenzhe
+ * @LastEditTime: 2020-04-09 08:11:23
+ */
 // https://umijs.org/config/
 import { defineConfig, utils } from 'umi';
 import defaultSettings from './defaultSettings';

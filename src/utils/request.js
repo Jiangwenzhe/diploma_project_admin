@@ -1,3 +1,9 @@
+/*
+ * @Author: Wenzhe
+ * @Date: 2020-04-08 16:25:28
+ * @LastEditors: Wenzhe
+ * @LastEditTime: 2020-04-09 09:32:39
+ */
 /**
  * request 网络请求工具
  * 更详细的 api 文档: https://github.com/umijs/umi-request
@@ -53,5 +59,9 @@ const request = extend({
   errorHandler,
   // 默认错误处理
   credentials: 'include', // 默认请求是否带上cookie
+  headers: {
+    // add jwt token
+    'Authorization': `Bearer ${localStorage.getItem('admin-login-token')}`
+  }
 });
 export default request;

@@ -1,3 +1,9 @@
+/*
+ * @Author: Wenzhe
+ * @Date: 2020-04-08 16:25:28
+ * @LastEditors: Wenzhe
+ * @LastEditTime: 2020-04-09 08:14:11
+ */
 /**
  * 在生产环境 代理是无法生效的，所以这里没有生产环境的配置
  * The agent cannot take effect in the production environment
@@ -7,30 +13,28 @@
  */
 export default {
   dev: {
-    '/api/': {
-      target: 'https://preview.pro.ant.design',
-      changeOrigin: true,
-      pathRewrite: {
-        '^': '',
-      },
-    },
+    '/api': {
+      target: 'http://127.0.0.1:7001/api',
+      pathRewrite: { '^/api': '' },
+      changeOrigin: true
+    }
   },
-  test: {
-    '/api/': {
-      target: 'https://preview.pro.ant.design',
-      changeOrigin: true,
-      pathRewrite: {
-        '^': '',
-      },
-    },
-  },
-  pre: {
-    '/api/': {
-      target: 'your pre url',
-      changeOrigin: true,
-      pathRewrite: {
-        '^': '',
-      },
-    },
-  },
+  // test: {
+  //   '/api/': {
+  //     target: 'https://preview.pro.ant.design',
+  //     changeOrigin: true,
+  //     pathRewrite: {
+  //       '^': '',
+  //     },
+  //   },
+  // },
+  // pre: {
+  //   '/api/': {
+  //     target: 'your pre url',
+  //     changeOrigin: true,
+  //     pathRewrite: {
+  //       '^': '',
+  //     },
+  //   },
+  // },
 };

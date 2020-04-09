@@ -9,3 +9,10 @@ export async function fakeAccountLogin(params) {
 export async function getFakeCaptcha(mobile) {
   return request(`/api/login/captcha?mobile=${mobile}`);
 }
+
+export async function accountLogin(params) {
+  return request('/api/user/access/login', {
+    method: 'POST',
+    data: params,
+  });
+}

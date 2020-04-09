@@ -1,6 +1,12 @@
+/*
+ * @Author: Wenzhe
+ * @Date: 2020-04-08 16:25:28
+ * @LastEditors: Wenzhe
+ * @LastEditTime: 2020-04-09 09:31:51
+ */
 import { stringify } from 'querystring';
 import { history } from 'umi';
-import { fakeAccountLogin } from '@/services/login';
+import { accountLogin } from '@/services/login';
 import { setAuthority } from '@/utils/authority';
 import { getPageQuery } from '@/utils/utils';
 
@@ -11,17 +17,18 @@ const Model = {
   },
   effects: {
     *login({ payload }, { call, put }) {
-      const response = yield call(fakeAccountLogin, payload);
+      const response = yield call(accountLogin, payload);
       yield put({
         type: 'changeLoginStatus',
-        payload: response,
+        payload: response.data,
       }); // Login successfully
-
-      if (response.status === 'ok') {
+      const { token } = response.data;
+      // 设置 jwt token
+      localStorage.setItem('admin-login-token', token);
+      if (response.data.status === 'ok') {
         const urlParams = new URL(window.location.href);
         const params = getPageQuery();
         let { redirect } = params;
-
         if (redirect) {
           const redirectUrlParams = new URL(redirect);
 

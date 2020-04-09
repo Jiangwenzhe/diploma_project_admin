@@ -1,3 +1,9 @@
+/*
+ * @Author: Wenzhe
+ * @Date: 2020-04-08 16:25:28
+ * @LastEditors: Wenzhe
+ * @LastEditTime: 2020-04-09 09:08:44
+ */
 import { queryCurrent, query as queryUsers } from '@/services/user';
 
 const UserModel = {
@@ -18,7 +24,7 @@ const UserModel = {
       const response = yield call(queryCurrent);
       yield put({
         type: 'saveCurrentUser',
-        payload: response,
+        payload: response.data,
       });
     },
   },
