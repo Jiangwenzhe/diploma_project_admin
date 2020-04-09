@@ -2,7 +2,7 @@
  * @Author: Wenzhe
  * @Date: 2020-04-08 16:25:28
  * @LastEditors: Wenzhe
- * @LastEditTime: 2020-04-09 08:11:23
+ * @LastEditTime: 2020-04-09 10:03:14
  */
 // https://umijs.org/config/
 import { defineConfig, utils } from 'umi';
@@ -87,10 +87,20 @@ export default defineConfig({
               ],
             },
             {
-              name: 'list.table-list',
-              icon: 'table',
-              path: '/list',
-              component: './ListTableList',
+              path: '/problem',
+              name: 'problem',
+              icon: 'crown',
+              // component: './Admin',
+              authority: ['admin'],
+              routes: [
+                {
+                  path: '/problem/list',
+                  name: 'list',
+                  icon: 'smile',
+                  component: './problem/problemList',
+                  authority: ['admin'],
+                },
+              ],
             },
             {
               component: './404',
