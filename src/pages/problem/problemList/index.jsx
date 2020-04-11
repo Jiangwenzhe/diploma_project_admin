@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Card, Typography, Input, Table, Button, Tooltip } from 'antd';
 import { DeleteTwoTone, DownloadOutlined, EditOutlined } from '@ant-design/icons';
 import { PageHeaderWrapper } from '@ant-design/pro-layout';
-import { connect } from 'umi';
+import { connect, Link } from 'umi';
 import moment from 'moment';
 
 const { Search } = Input;
@@ -12,6 +12,7 @@ const ProblemTable = (props) => {
   const {
     problem: { problemList, total },
     dispatch,
+    fetching,
   } = props;
 
   const [pagination, setPagination] = useState({ current: 1, pageSize: 10, total: 0 });
@@ -77,7 +78,10 @@ const ProblemTable = (props) => {
           <>
             <Tooltip placement="top" title="编辑题目">
               <Button style={{ marginRight: '4px' }} size="small">
-                <EditOutlined />
+                {/* eslint-disable-next-line no-underscore-dangle */}
+                <Link to={`/problem/update/${record._id}`}>
+                  <EditOutlined />
+                </Link>
               </Button>
             </Tooltip>
             <Tooltip placement="top" title="下载题目执行用例">
@@ -118,6 +122,7 @@ const ProblemTable = (props) => {
           pagination={{ ...pagination, total }}
           onChange={tableChangeHandler}
           scroll={{ x: 1000 }}
+          loading={fetching}
         />
       </Card>
     </PageHeaderWrapper>

@@ -2,7 +2,7 @@
  * @Author: Wenzhe
  * @Date: 2020-04-08 16:25:28
  * @LastEditors: Wenzhe
- * @LastEditTime: 2020-04-09 09:31:51
+ * @LastEditTime: 2020-04-10 22:39:51
  */
 import { stringify } from 'querystring';
 import { history } from 'umi';
@@ -24,8 +24,8 @@ const Model = {
       }); // Login successfully
       const { token } = response.data;
       // 设置 jwt token
-      localStorage.setItem('admin-login-token', token);
       if (response.data.status === 'ok') {
+        localStorage.setItem('admin-login-token', token);
         const urlParams = new URL(window.location.href);
         const params = getPageQuery();
         let { redirect } = params;

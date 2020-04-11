@@ -2,10 +2,16 @@
  * @Author: Wenzhe
  * @Date: 2020-04-09 10:15:27
  * @LastEditors: Wenzhe
- * @LastEditTime: 2020-04-10 15:12:38
+ * @LastEditTime: 2020-04-11 16:13:59
  */
 
-import { getProlebmList, deleteSingleProblem } from '@/services/problem';
+import {
+  getProlebmList,
+  deleteSingleProblem,
+  createProblem,
+  getProblemInfo,
+  updateProblem,
+} from '@/services/problem';
 import { message } from 'antd';
 
 const Model = {
@@ -13,6 +19,7 @@ const Model = {
   state: {
     problemList: [],
     total: 0,
+    currentProblemInfo: {},
   },
   effects: {
     *fetchProblemList({ payload }, { call, put }) {
@@ -47,6 +54,33 @@ const Model = {
           },
         });
       }
+    },
+    *createProblem({ payload }, { call }) {
+      const response = yield call(createProblem, payload);
+      // eslint-disable-next-line no-underscore-dangle
+      if (response && response.data && response.data._id) {
+        message.success(`pid 为 ${response.data.pid} 的题目创建成功`);
+      }
+    },
+    *updateProblem({ payload }, { call, put }) {
+      const response = yield call(updateProblem, payload);
+      // eslint-disable-next-line no-underscore-dangle
+      if (response && response.data && response.data.status === '修改成功') {
+        message.success(`pid 为 ${response.data.newValue.pid} 的题目更新成功`);
+        yield put({
+          type: 'getProblemInfo',
+          payload: payload.id,
+        })
+      }
+    },
+    *getProblemInfo({ payload }, { call, put }) {
+      const response = yield call(getProblemInfo, payload);
+      yield put({
+        type: 'save',
+        payload: {
+          currentProblemInfo: response.data,
+        },
+      });
     },
   },
   reducers: {

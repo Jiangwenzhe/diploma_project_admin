@@ -2,7 +2,7 @@
  * @Author: Wenzhe
  * @Date: 2020-04-09 15:10:43
  * @LastEditors: Wenzhe
- * @LastEditTime: 2020-04-10 14:45:29
+ * @LastEditTime: 2020-04-11 16:15:00
  */
 import request from '@/utils/request';
 
@@ -18,7 +18,6 @@ export async function getProlebmList(params) {
     pagination: { current, pageSize },
     query: { title },
   } = params;
-  // console.log(title);
   if (title) {
     return request(`/api/problem?current=${current}&&pageSize=${pageSize}&&title=${title}`);
   }
@@ -32,6 +31,23 @@ export async function getSingleProblemTestCase(params) {
 
 export async function deleteSingleProblem(params) {
   const { problem_id } = params;
-  // console.log(problem_id);
   return request(`/api/problem/${problem_id}`, { method: 'DELETE' });
+}
+
+export async function createProblem(params) {
+  return request('/api/problem', {
+    method: 'POST',
+    data: params,
+  });
+}
+
+export async function updateProblem(params) {
+  return request(`/api/problem/${params.id}`, {
+    method: 'PUT',
+    data: params.data,
+  });
+}
+
+export async function getProblemInfo(params) {
+  return request(`/api/problem/${params}`)
 }
