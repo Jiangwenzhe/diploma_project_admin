@@ -53,7 +53,7 @@ const ProblemTable = (props) => {
     {
       title: 'title',
       dataIndex: 'title',
-      width: 200,
+      width: 150,
       render: (value) => <Text strong>{value}</Text>,
     },
     {
@@ -119,7 +119,7 @@ const ProblemTable = (props) => {
           columns={columns}
           rowKey="_id"
           dataSource={problemList}
-          pagination={{ ...pagination, total }}
+          pagination={{ ...pagination, total, showSizeChanger: true }}
           onChange={tableChangeHandler}
           scroll={{ x: 1000 }}
           loading={fetching}
