@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Card, Typography, Input, Table, Button, Tooltip } from 'antd';
+import { Card, Typography, Input, Table, Button, Tooltip, Popconfirm } from 'antd';
 import { DeleteTwoTone, DownloadOutlined, EditOutlined } from '@ant-design/icons';
 import { PageHeaderWrapper } from '@ant-design/pro-layout';
 import { connect, Link } from 'umi';
@@ -53,7 +53,7 @@ const ProblemTable = (props) => {
     {
       title: 'title',
       dataIndex: 'title',
-      width: 150,
+      // width: 150,
       render: (value) => <Text strong>{value}</Text>,
     },
     {
@@ -93,10 +93,19 @@ const ProblemTable = (props) => {
               </Button>
             </Tooltip>
             <Tooltip placement="top" title="删除题目">
-              {/* eslint-disable-next-line no-underscore-dangle */}
-              <Button size="small" onClick={() => handleDeleteProblem(record._id)}>
-                <DeleteTwoTone twoToneColor="#eb2f96" />
-              </Button>
+              <Popconfirm
+                arrowPointAtCenter
+                placement="topRight"
+                title={`确定要删除 title 为 ${record.title} 的题目吗?`}
+                // eslint-disable-next-line no-underscore-dangle
+                onConfirm={() => handleDeleteProblem(record._id)}
+                okText="确定"
+                cancelText="取消"
+              >
+                <Button size="small">
+                  <DeleteTwoTone twoToneColor="#eb2f96" />
+                </Button>
+              </Popconfirm>
             </Tooltip>
           </>
         );
