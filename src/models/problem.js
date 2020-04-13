@@ -2,7 +2,7 @@
  * @Author: Wenzhe
  * @Date: 2020-04-09 10:15:27
  * @LastEditors: Wenzhe
- * @LastEditTime: 2020-04-11 16:13:59
+ * @LastEditTime: 2020-04-13 14:55:05
  */
 
 import {
@@ -13,6 +13,7 @@ import {
   updateProblem,
 } from '@/services/problem';
 import { message } from 'antd';
+import { history } from 'umi';
 
 const Model = {
   namespace: 'problem',
@@ -59,7 +60,11 @@ const Model = {
       const response = yield call(createProblem, payload);
       // eslint-disable-next-line no-underscore-dangle
       if (response && response.data && response.data._id) {
-        message.success(`pid 为 ${response.data.pid} 的题目创建成功`);
+        message.success(`pid 为 ${response.data.pid} 的题目创建成, 之后会跳转到新页面`);
+        // 跳转页面
+        setTimeout(() => {
+          history.push('/problem/list');
+        }, 1000);
       }
     },
     *updateProblem({ payload }, { call, put }) {
