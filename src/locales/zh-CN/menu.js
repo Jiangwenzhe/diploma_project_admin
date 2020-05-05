@@ -2,7 +2,7 @@
  * @Author: Wenzhe
  * @Date: 2020-04-08 16:25:28
  * @LastEditors: Wenzhe
- * @LastEditTime: 2020-04-10 16:02:26
+ * @LastEditTime: 2020-05-05 10:36:19
  */
 export default {
   'menu.welcome': '欢迎',
@@ -57,5 +57,8 @@ export default {
   'menu.editor.koni': '拓扑编辑器',
   'menu.problem': '题库管理',
   'menu.problem.list': '题目列表',
-  'menu.problem.problemForm': '题目表单'
+  'menu.problem.problemForm': '题目表单',
+  'menu.contest': '比赛管理',
+  'menu.contest.list': '比赛列表',
+  'menu.contest.contestForm': '比赛表单',
 };
