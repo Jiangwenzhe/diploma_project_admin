@@ -35,6 +35,16 @@ const ProblemTable = (props) => {
     setPagination({ current: 1, pageSize: 10 });
   };
 
+  const handleSearchTextisNull = (e) => {
+    const { value } = e.target;
+    if (value === '') {
+      dispatch({
+        type: 'problem/fetchProblemList',
+        payload: { pagination: { current: 1, pageSize: 10 }, query: { ...query, title: '' } },
+      });
+    }
+  };
+
   const handleDeleteProblem = (problem_id) => {
     dispatch({
       type: 'problem/deleteSignleProblem',
@@ -120,7 +130,7 @@ const ProblemTable = (props) => {
           placeholder="请输入关键字"
           enterButton="搜索"
           size="large"
-          // TODO: 当搜索框为空的时，就重新发起请求
+          onChange={(value) => handleSearchTextisNull(value)}
           onSearch={(value) => handleTitleQuery(value)}
         />
         <Table
