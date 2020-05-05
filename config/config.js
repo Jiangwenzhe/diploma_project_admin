@@ -2,7 +2,7 @@
  * @Author: Wenzhe
  * @Date: 2020-04-08 16:25:28
  * @LastEditors: Wenzhe
- * @LastEditTime: 2020-04-11 15:46:43
+ * @LastEditTime: 2020-05-05 13:36:48
  */
 // https://umijs.org/config/
 import { defineConfig, utils } from 'umi';
@@ -108,6 +108,36 @@ export default defineConfig({
                 {
                   path: '/problem/update/:id',
                   component: './problem/problemFormUpdate',
+                },
+              ],
+            },
+            {
+              path: '/contest',
+              name: 'contest',
+              icon: 'ContainerOutlined',
+              // component: './Admin',
+              authority: ['admin'],
+              routes: [
+                {
+                  path: '/contest/list',
+                  name: 'list',
+                  icon: 'OrderedListOutlined',
+                  component: './contest/contestList',
+                  authority: ['admin'],
+                },
+                {
+                  name: 'contestForm',
+                  icon: 'FormOutlined',
+                  path: '/contest/create',
+                  component: './contest/contestForm',
+                },
+                {
+                  path: '/contest/update/:id',
+                  component: './contest/contestForm',
+                },
+                {
+                  path: '/contest/problem/:cid',
+                  component: './contest/contestProblem',
                 },
               ],
             },
