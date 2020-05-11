@@ -2,7 +2,7 @@
  * @Author: Wenzhe
  * @Date: 2020-04-08 16:25:28
  * @LastEditors: Wenzhe
- * @LastEditTime: 2020-05-05 13:36:48
+ * @LastEditTime: 2020-05-11 16:07:24
  */
 // https://umijs.org/config/
 import { defineConfig, utils } from 'umi';
@@ -66,21 +66,20 @@ export default defineConfig({
             {
               path: '/welcome',
               name: 'welcome',
-              icon: 'smile',
+              icon: 'AreaChartOutlined',
               component: './Welcome',
             },
             {
               path: '/admin',
               name: 'admin',
-              icon: 'crown',
-              component: './Admin',
+              icon: 'DashboardOutlined',
               authority: ['admin'],
               routes: [
                 {
-                  path: '/admin/sub-page',
-                  name: 'sub-page',
-                  icon: 'smile',
-                  component: './Welcome',
+                  path: '/admin/user',
+                  name: 'user_manage',
+                  icon: 'UserOutlined',
+                  component: './General/User/index',
                   authority: ['admin'],
                 },
               ],
@@ -114,7 +113,7 @@ export default defineConfig({
             {
               path: '/contest',
               name: 'contest',
-              icon: 'ContainerOutlined',
+              icon: 'CalculatorOutlined',
               // component: './Admin',
               authority: ['admin'],
               routes: [

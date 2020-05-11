@@ -2,13 +2,13 @@
  * @Author: Wenzhe
  * @Date: 2020-04-08 16:25:28
  * @LastEditors: Wenzhe
- * @LastEditTime: 2020-05-05 10:36:19
+ * @LastEditTime: 2020-05-11 16:06:14
  */
 export default {
-  'menu.welcome': '欢迎',
+  'menu.welcome': '系统信息',
   'menu.more-blocks': '更多区块',
   'menu.home': '首页',
-  'menu.admin': '管理页',
+  'menu.admin': '系统管理',
   'menu.admin.sub-page': '二级管理页',
   'menu.login': '登录',
   'menu.register': '注册',
@@ -61,4 +61,5 @@ export default {
   'menu.contest': '比赛管理',
   'menu.contest.list': '比赛列表',
   'menu.contest.contestForm': '比赛表单',
+  'menu.admin.user_manage': '用户管理',
 };
