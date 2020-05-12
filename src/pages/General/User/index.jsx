@@ -18,7 +18,7 @@ import {
 import { DeleteTwoTone, EditOutlined, LoadingOutlined, PlusOutlined } from '@ant-design/icons';
 import { PageHeaderWrapper } from '@ant-design/pro-layout';
 import moment from 'moment';
-import { connect, Link } from 'umi';
+import { connect } from 'umi';
 import styles from './index.less';
 
 const { Search } = Input;
@@ -87,8 +87,6 @@ const UserList = (props) => {
   };
 
   const onUpdateFormFinish = (values) => {
-    console.log('Success:', values);
-    // console.log()
     const formValue = values;
     if (avatarImageUrl) {
       formValue.avatar = avatarImageUrl;
@@ -173,7 +171,6 @@ const UserList = (props) => {
   };
 
   const handleUpdateUser = (record) => {
-    console.log(record);
     setIsUpdate(true);
     // eslint-disable-next-line no-underscore-dangle
     setUpdateUserId(record._id);
@@ -191,7 +188,6 @@ const UserList = (props) => {
   };
 
   const handleDeleteUser = (id) => {
-    console.log(id);
     dispatch({
       type: 'userManage/deleteUser',
       payload: {
