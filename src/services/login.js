@@ -1,3 +1,9 @@
+/*
+ * @Author: Wenzhe
+ * @Date: 2020-04-08 16:25:28
+ * @LastEditors: Wenzhe
+ * @LastEditTime: 2020-05-12 15:02:45
+ */
 import request from '@/utils/request';
 
 export async function fakeAccountLogin(params) {

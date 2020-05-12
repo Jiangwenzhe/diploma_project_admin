@@ -2,7 +2,7 @@
  * @Author: Wenzhe
  * @Date: 2020-04-08 16:25:28
  * @LastEditors: Wenzhe
- * @LastEditTime: 2020-05-11 16:06:14
+ * @LastEditTime: 2020-05-12 14:48:46
  */
 export default {
   'menu.welcome': '系统信息',
@@ -62,4 +62,6 @@ export default {
   'menu.contest.list': '比赛列表',
   'menu.contest.contestForm': '比赛表单',
   'menu.admin.user_manage': '用户管理',
+  'menu.admin.discuss_manage': '讨论｜文章管理',
+
 };

@@ -2,7 +2,7 @@
  * @Author: Wenzhe
  * @Date: 2020-04-08 16:25:28
  * @LastEditors: Wenzhe
- * @LastEditTime: 2020-05-11 16:07:24
+ * @LastEditTime: 2020-05-12 14:46:35
  */
 // https://umijs.org/config/
 import { defineConfig, utils } from 'umi';
@@ -80,6 +80,13 @@ export default defineConfig({
                   name: 'user_manage',
                   icon: 'UserOutlined',
                   component: './General/User/index',
+                  authority: ['admin'],
+                },
+                {
+                  path: '/admin/discuss',
+                  name: 'discuss_manage',
+                  icon: 'ReadOutlined',
+                  component: './General/Discuss/index',
                   authority: ['admin'],
                 },
               ],
