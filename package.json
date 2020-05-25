@@ -11,7 +11,6 @@
     "fetch:blocks": "pro fetch-blocks --branch=umi@3 && npm run prettier",
     "gh-pages": "cp CNAME ./dist/ && gh-pages -d dist",
     "i18n-remove": "pro i18n-remove --locale=zh-CN --write",
-    "postinstall": "umi g tmp",
     "lint": "umi g tmp && npm run lint:js && npm run lint:style && npm run lint:prettier",
     "lint-staged": "lint-staged",
     "lint-staged:js": "eslint --ext .js,.jsx,.ts,.tsx ",
@@ -30,7 +29,12 @@
     "test": "umi test",
     "test:all": "node ./tests/run-tests.js",
     "test:component": "umi test ./src/components",
-    "tsc": "tsc"
+    "tsc": "tsc",
+    "postinstall": "electron-builder install-app-deps",
+    "postuninstall": "electron-builder install-app-deps",
+    "electron:pack": "umi build electron pack",
+    "electron:dev": "umi dev electron",
+    "electron:build": "umi build electron"
   },
   "husky": {
     "hooks": {
@@ -108,7 +112,16 @@
     "prettier": "^2.0.1",
     "pro-download": "1.0.1",
     "puppeteer-core": "^2.1.1",
-    "stylelint": "^13.0.0"
+    "stylelint": "^13.0.0",
+    "umi-plugin-electron-builder": "0.0.17",
+    "@types/electron-devtools-installer": "^2.2.0",
+    "@types/node": "^12.12.35",
+    "electron": "^8.2.1",
+    "electron-builder": "^22.4.1",
+    "electron-devtools-installer": "^3.0.0",
+    "electron-webpack": "^2.8.2",
+    "electron-webpack-ts": "^4.0.1",
+    "typescript": "^3.8.3"
   },
   "engines": {
     "node": ">=10.0.0"
@@ -119,5 +132,9 @@
     "src/**/*.less",
     "config/**/*.js*",
     "scripts/**/*.js"
-  ]
+  ],
+  "electronWebpack": {
+    "renderer": null
+  },
+  "main": "main.js"
 }
