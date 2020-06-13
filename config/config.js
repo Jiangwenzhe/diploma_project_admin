@@ -2,7 +2,7 @@
  * @Author: Wenzhe
  * @Date: 2020-04-08 16:25:28
  * @LastEditors: Wenzhe
- * @LastEditTime: 2020-05-12 14:46:35
+ * @LastEditTime: 2020-06-13 10:22:27
  */
 // https://umijs.org/config/
 import { defineConfig, utils } from 'umi';
@@ -16,29 +16,30 @@ const { ANT_DESIGN_PRO_ONLY_DO_NOT_USE_IN_YOUR_PRODUCTION, REACT_APP_ENV, GA_KEY
 export default defineConfig({
   hash: true,
   antd: {},
+  favicon: '/favicon.ico',
   analytics: GA_KEY
-    ? {
+  ? {
         ga: GA_KEY,
       }
-    : false,
-  dva: {
-    hmr: true,
-  },
-  locale: {
-    // default zh-CN
-    default: 'zh-CN',
-    // default true, when it is true, will use `navigator.language` overwrite default
-    antd: true,
-    baseNavigator: true,
-  },
-  dynamicImport: {
-    loading: '@/components/PageLoading/index',
-  },
-  targets: {
-    ie: 11,
-  },
-  // umi routes: https://umijs.org/docs/routing
-  routes: [
+      : false,
+      dva: {
+        hmr: true,
+      },
+      locale: {
+        // default zh-CN
+        default: 'zh-CN',
+        // default true, when it is true, will use `navigator.language` overwrite default
+        antd: true,
+        baseNavigator: true,
+      },
+      dynamicImport: {
+        loading: '@/components/PageLoading/index',
+      },
+      targets: {
+        ie: 11,
+      },
+      // umi routes: https://umijs.org/docs/routing
+      routes: [
     {
       path: '/user',
       component: '../layouts/UserLayout',
